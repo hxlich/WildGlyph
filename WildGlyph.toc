@@ -1,13 +1,15 @@
 ## Interface: 11200
 ## Title: WildGlyph - Druid
 ## Notes: A collection of druid utilities.
-## Author: Hxlich, 2022-2023
-## Version: 0.1.0
+## Author: Starwood
+## Version: 1.0.0
 ## SavedVariables: Wild_Glyph_Store
 
-Lib/Print.lua
+Lib\Print.lua
 
 Locale\enUS.lua
+
+Configs\MainMenu.lua
 
 Migration\Runner.lua
 
