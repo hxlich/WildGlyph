@@ -5,13 +5,23 @@
 ## Version: 1.0.0
 ## SavedVariables: Wild_Glyph_Store
 
-Lib\Print.lua
-
+Lib\Utils.lua
+Constants.lua
 Locale\enUS.lua
+
+Lib\Aura.lua
+Lib\SpellBook.lua
+Lib\Print.lua
+Lib\SpellBook.lua
+
+Events\SpellCast.lua
+Events\FrameLock.lua
 
 Configs\MainMenu.lua
 
 Migration\Runner.lua
+
+Modules\OmenOfClarityAlarm.lua
 
 WildGlyph.lua
 

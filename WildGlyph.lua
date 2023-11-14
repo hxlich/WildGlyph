@@ -1,14 +1,17 @@
 _G = _G or getfenv()
 _G.WG_Modules = {
-
+	WG_Module_OmenOfClarityAlarm
 }
 
 local initSlashCommandsAndModules = function()
     SLASH_WILDGLYPH1 = "/wg"
     SLASH_WILDGLYPH2 = "/wildglyph"
     _, cl = UnitClass("player")
-    if c1 == "DRUID" then
+    if cl == "DRUID" then
         SlashCmdList["WILDGLYPH"] = function() DEFAULT_CHAT_FRAME:AddMessage("Hello WildGlyph", 0, 1, 0) end
+		for _k, v in _G.WG_Modules do
+			if Wild_Glyph_Store.ModuleEnabled[v.Id] then v.OnEnable() end
+		end
     else
         SlashCmdList["WILDGLYPH"]  = function() DEFAULT_CHAT_FRAME:AddMessage(WILDGLYPH_T.UI.WrongClass, 1, 0.5, 0) end
     end
@@ -28,9 +31,9 @@ local savedVariablesRestore = function()
 end
 
 local savedVariablesPersist = function()
-	-- for _k, v in _G.Wild_Glyph_Store do
-	-- 	Wild_Glyph_Store.ModuleStore[v.Id] = v.OnSavedVariablesPersist()
-	-- end
+	for _k, v in _G.WG_Modules do
+		Quiver_Store.ModuleStore[v.Id] = v.OnSavedVariablesPersist()
+	end
 end
 
 
