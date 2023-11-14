@@ -27,15 +27,12 @@ local aura = (function()
 			lastUpdate = 0
 
 			if knowsAura and not isActive then
-				WG_Lib_Print.Success("1")
 				frame.Icon:SetAlpha(0.75)
 				frame:SetBackdropBorderColor(1, 0, 0, 0.8)
 			elseif knowsAura and isActive and timeLeft > 0 and timeLeft < MINUTES_LEFT_WARNING * 60 then
-				WG_Lib_Print.Success("2")
 				frame.Icon:SetAlpha(0.4)
 				frame:SetBackdropBorderColor(0, 0, 0, 0.1)
 			else
-				WG_Lib_Print.Success("3")
 				updateDelay = UPDATE_DELAY_SLOW
 				frame.Icon:SetAlpha(0.0)
 				frame:SetBackdropBorderColor(0, 0, 0, 0)
@@ -70,8 +67,8 @@ local createUI = function()
 	f.Icon:SetPoint("Top", f, "Top", 0, -INSET)
 	f.Icon:SetPoint("Bottom", f, "Bottom", 0, INSET)
 
-	-- WG_Event_FrameLock_SideEffectMakeMoveable(f, store)
-	-- WG_Event_FrameLock_SideEffectMakeResizeable(f, store, { GripMargin=0 })
+	WG_Event_FrameLock_SideEffectMakeMoveable(f, store)
+	WG_Event_FrameLock_SideEffectMakeResizeable(f, store, { GripMargin=0 })
 	return f
 end
 -- ************ Event Handlers ************
