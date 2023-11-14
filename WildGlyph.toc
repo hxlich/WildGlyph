@@ -3,13 +3,13 @@
 ## Notes: A collection of druid utilities.
 ## Author: Hxlich, 2022-2023
 ## Version: 0.1.0
-## SavedVariables: Wild_Glyph
+## SavedVariables: Wild_Glyph_Store
 
-
-
-lib/Print.lua
+Lib/Print.lua
 
 Locale\enUS.lua
+
+Migration\Runner.lua
 
 WildGlyph.lua
 

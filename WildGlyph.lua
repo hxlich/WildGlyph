@@ -1,4 +1,7 @@
 _G = _G or getfenv()
+_G.WG_Modules = {
+
+}
 
 local initSlashCommandsAndModules = function()
     SLASH_WILDGLYPH1 = "/wg"
@@ -12,6 +15,28 @@ local initSlashCommandsAndModules = function()
 end
 
 
+local savedVariablesRestore = function()
+	if Wild_Glyph_Store == nil then
+		Wild_Glyph_Store = {}
+	end
+
+	Wild_Glyph_Store.IsLockedFrames = Wild_Glyph_Store.IsLockedFrames == true
+	Wild_Glyph_Store.ModuleEnabled = Wild_Glyph_Store.ModuleEnabled or {}
+	Wild_Glyph_Store.ModuleStore = Wild_Glyph_Store.ModuleStore or {}
+	for _k, v in _G.WG_Modules do
+		Wild_Glyph_Store.ModuleEnabled[v.Id] = 	Wild_Glyph_Store.ModuleEnabled[v.Id] ~= false
+		Wild_Glyph_Store.ModuleStore[v.Id] = Wild_Glyph_Store.ModuleStore[v.Id] or {}
+		-- Loading saved variables into each module gives them a chance to set their own defaults.
+		v.OnSavedVariablesRestore(Wild_Glyph_Store.ModuleStore[v.Id])
+	end
+end
+
+local savedVariablesPersist = function()
+	-- for _k, v in _G.Wild_Glyph_Store do
+	-- 	Wild_Glyph_Store.ModuleStore[v.Id] = v.OnSavedVariablesPersist()
+	-- end
+end
+
 
 --[[
     loading
@@ -23,14 +48,14 @@ frame:RegisterEvent("PLAYER_LOGOUT")
 frame:RegisterEvent("ADDON_LOADED")
 frame:SetScript("OnEvent", function()
 	if event == "ADDON_LOADED" and arg1 == "WildGlyph" then
-		-- Quiver_Migrations_Run()
-		-- savedVariablesRestore()
+		-- WG_Migrations_Run()
+		savedVariablesRestore()
 		initSlashCommandsAndModules()
 	elseif event == "PLAYER_LOGIN" then
 		-- Quiver_Module_UpdateNotifier_Init()
 		-- loadPlugins()
 	elseif event == "PLAYER_LOGOUT" then
-		-- savedVariablesPersist()
+		savedVariablesPersist()
 	elseif event == "ACTIONBAR_SLOT_CHANGED" then
 		-- Quiver_Lib_ActionBar_ValidateCache(arg1)
 	end

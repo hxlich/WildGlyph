@@ -45,6 +45,7 @@
 		"UnitClass",
 		"SendChatMessage",
 		"UnitAffectingCombat",
-		"UnitName"
+		"UnitName",
+		"Wild_Glyph_Store"
 	],
 }
