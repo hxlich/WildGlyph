@@ -1,10 +1,11 @@
 WILDGLYPH_T = {
     ModuleName = {
         OmenOfClarityAlarm = "Omen of Clarity Alarm",
+        ThornsAlarm = "Thorns Alarm",
     },
-
     Spellbook= {
-        OmenOfClarity = "Omen of Clarity"
+        OmenOfClarity = "Omen of Clarity",
+        Thorns = "Thorns",
     },
     UI = {
         WrongClass = "WildGlyph is for druids only.",

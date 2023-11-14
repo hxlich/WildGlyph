@@ -1,6 +1,7 @@
 _G = _G or getfenv()
 _G.WG_Modules = {
-	WG_Module_OmenOfClarityAlarm
+	WG_Module_OmenOfClarityAlarm,
+	WG_Module_ThornsAlarm
 }
 
 local initSlashCommandsAndModules = function()
