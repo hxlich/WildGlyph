@@ -16,10 +16,6 @@ end
 
 
 local savedVariablesRestore = function()
-	if Wild_Glyph_Store == nil then
-		Wild_Glyph_Store = {}
-	end
-
 	Wild_Glyph_Store.IsLockedFrames = Wild_Glyph_Store.IsLockedFrames == true
 	Wild_Glyph_Store.ModuleEnabled = Wild_Glyph_Store.ModuleEnabled or {}
 	Wild_Glyph_Store.ModuleStore = Wild_Glyph_Store.ModuleStore or {}
@@ -46,9 +42,10 @@ frame:RegisterEvent("ACTIONBAR_SLOT_CHANGED")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("PLAYER_LOGOUT")
 frame:RegisterEvent("ADDON_LOADED")
+
 frame:SetScript("OnEvent", function()
 	if event == "ADDON_LOADED" and arg1 == "WildGlyph" then
-		-- WG_Migrations_Run()
+		WG_Migrations_Run()
 		savedVariablesRestore()
 		initSlashCommandsAndModules()
 	elseif event == "PLAYER_LOGIN" then
